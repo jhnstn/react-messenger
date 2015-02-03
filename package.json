@@ -1,8 +1,12 @@
 {
   "name": "react-messenger",
-  "version": "0.0.1",
-  "description": "messenger service for react components",
+  "version": "0.0.2",
+  "description": "message service for React components",
   "main": "react-messenger.js",
+  "repository" : {
+    "type" : "git",
+    "url" : "git@github.com:jhnstn/react-messenger.git"
+  },
   "scripts": {
     "test": "jest"
   },
