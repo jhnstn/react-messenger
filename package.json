@@ -1,0 +1,22 @@
+{
+  "name": "react-messenger",
+  "version": "0.0.1",
+  "description": "messenger service for react components",
+  "main": "react-messenger.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "react",
+    "reactive programming",
+    "reactjs"
+  ],
+  "author": "Jason Johnston",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.12.2"
+  },
+  "devDependencies": {
+    "jest-cli": "^0.2.1"
+  }
+}
