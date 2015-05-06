@@ -9,6 +9,7 @@
   } else {
     root.reactMessenger = factory();
   }
+
 }(typeof window !== "undefined" ? window : this, function() {
 
   'use strict';
@@ -19,22 +20,21 @@
       this.sendMessageToParent(route, message, source || this);
     },
 
-    _recieveMessage: function(route, message, source) {
+    // Declare 'receiveMessage' on your component.
+    _receiveMessage: function(route, message, source) {
+      var routeReceiver;
+      var receiver = this.constructor.prototype.recieveMessage;
 
-      var routeReciever;
-      var reciever = this.constructor.prototype.recieveMessage;
-
-      if(typeof reciever == 'object') {
-        routeReciever = reciever[route] || reciever['*'];
+      if (typeof receiver === 'object') {
+        routeReceiver = receiver[route] || receiver['*'];
       }
 
-      (routeReciever || reciever) && (routeReciever || reciever).call(this, message, route, source);
-
+      (routeReceiver || receiver) && (routeReceiver || receiver).call(this, message, route, source);
     },
 
-    sendMessageToParent: function(route, message,source) {
-      if(this._owner) {
-        this._owner._recieveMessage(route,message,source);
+    sendMessageToParent: function(route, message, source) {
+      if (this._owner) {
+        this._owner._receiveMessage(route, message, source);
         this._owner.sendMessage(route, message, source);
       }
     }
@@ -42,4 +42,5 @@
   };
 
   return reactMessenger;
+
 }));
