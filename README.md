@@ -6,7 +6,36 @@ Message bus for React components
 
 ## Usage
 
-TBD
+Given a delete button component:
+
+```jsx
+<button className="delete" onClick={ this.sendMessage('deleteItem', { id: this.props.id }) }>
+  Delete
+</button>
+```
+
+That's rendered in a card component:
+
+```js
+receiveMessage: function(message, route, source) {
+  if (route === 'deleteItem') {
+    this.setState({ isUpdating: true });
+  }
+},
+```
+
+That's rendered in a list component that's the root component:
+
+```js
+receiveMessage: {
+  'deleteItem': function(message, route, source) {
+    this.props.store.deleteItem(message.id).then(this.render);
+  }.bind(this),
+  '*': function(message, route, source) {
+    console.log('Message', message, 'not handled for route', route, 'sent by source', source);
+  }
+}
+```
 
 ## License
 
