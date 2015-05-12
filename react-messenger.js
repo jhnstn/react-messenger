@@ -23,7 +23,7 @@
     // Declare 'receiveMessage' on your component.
     _receiveMessage: function(route, message, source) {
       var routeReceiver;
-      var receiver = this.constructor.prototype.recieveMessage;
+      var receiver = this.constructor.prototype.receiveMessage;
 
       if (typeof receiver === 'object') {
         routeReceiver = receiver[route] || receiver['*'];
